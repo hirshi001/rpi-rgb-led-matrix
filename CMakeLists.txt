@@ -13,3 +13,5 @@ target_include_directories(rpi-rgb-led-matrix PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
+
+target_link_libraries(rpi-rgb-led-matrix PUBLIC pthread rt)
