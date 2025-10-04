@@ -15,3 +15,5 @@ target_include_directories(rpi-rgb-led-matrix PUBLIC
 )
 
 target_link_libraries(rpi-rgb-led-matrix PUBLIC pthread rt)
+
+add_subdirectory(examples-api-use)
