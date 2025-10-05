@@ -1,6 +1,6 @@
 function(add_example example_name)
   add_executable(${example_name} ${example_name})
-  target_link_libraries(${example_name} rpi-rgb-led-matrix)
+  target_link_libraries(${example_name} PRIVATE rpi-rgb-led-matrix)
 endfunction()
 
 add_example(c-example.c)
