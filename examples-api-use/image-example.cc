@@ -25,7 +25,6 @@
 
 #include <exception>
 #include <Magick++.h>
-#include <magick/image.h>
 
 using rgb_matrix::Canvas;
 using rgb_matrix::RGBMatrix;
@@ -85,11 +84,11 @@ void CopyImageToCanvas(const Magick::Image &image, Canvas *canvas) {
   for (size_t y = 0; y < image.rows(); ++y) {
     for (size_t x = 0; x < image.columns(); ++x) {
       const Magick::Color &c = image.pixelColor(x, y);
-      if (c.alphaQuantum() < 256) {
+      if (c.quantumAlpha() < 256) {
         canvas->SetPixel(x + offset_x, y + offset_y,
-                         ScaleQuantumToChar(c.redQuantum()),
-                         ScaleQuantumToChar(c.greenQuantum()),
-                         ScaleQuantumToChar(c.blueQuantum()));
+                         MagickCore::ScaleQuantumToChar(c.quantumRed()),
+                         MagickCore::ScaleQuantumToChar(c.quantumGreen()),
+                         MagickCore::ScaleQuantumToChar(c.quantumBlue()));
       }
     }
   }
